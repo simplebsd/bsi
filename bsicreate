@@ -1,0 +1,37 @@
+#!/bin/sh
+
+echo "OS:"
+echo "1. FreeBSD."
+echo "2. Ubuntu."
+echo ""
+read -p "1 or 2: " os
+echo ""
+
+if [ $os -eq 1 ]
+then
+read -p "Enter full path for install iso: " iso
+echo ""
+read -p "Enter number of cores CPU(1-4): " cpu
+echo ""
+read -p "Enter size of memory(MB): " mem
+echo ""
+read -p "Enter size of disk(GB): " disk
+echo ""
+read -p "Enter name: " name
+cd /usr/vm/test
+mkdir $name
+cd $name 
+truncate -s "$disk"G $name.img
+echo "#!/bin/sh
+
+/usr/share/examples/bhyve/vmrun.sh -c $cpu -m $mem -t tap1 -d $name.img $name" > start.sh
+chmod +x start.sh
+
+/usr/share/examples/bhyve/vmrun.sh -c $cpu -m $mem -t tap1 -d $name.img -i -I $iso $name
+fi
+
+if [ $os -eq 2 ]
+then
+echo "it works"
+fi
+exit 0
