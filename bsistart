@@ -1,0 +1,4 @@
+#!/bin/sh
+
+screen -d -m -S "$@" sh -c 'cd /usr/vm/services/'$@' && ./start.sh'
+screen -d -m -S "$@" sh -c 'cd /usr/vm/test/'$@' && ./start.sh'
