@@ -1,4 +1,0 @@
-#!/bin/sh
-
-bhyvectl --destroy --vm=$@
-rm -rf /usr/vm/$@
