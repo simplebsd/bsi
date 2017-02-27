@@ -1,4 +1,3 @@
-SHELL=/bin/csh
 install:
 	pkg ins -y screen rsync
 	mkdir -p /usr/vm/iso
@@ -10,7 +9,6 @@ install:
 	clang++ bsidelete.cpp -o /usr/local/bin/bsidelete
 	clang++ bsiopen.cpp -o /usr/local/bin/bsiopen
 	clang++ bsiclon.cpp -o /usr/local/bin/bsiclon
-	hash -r
 
 deinstall:
 	pkg del -y screen rsync
@@ -23,4 +21,3 @@ deinstall:
 	rm /usr/local/bin/bsidelete
 	rm /usr/local/bin/bsiopen
 	rm /usr/local/bin/bsiclon
-	hash -r
