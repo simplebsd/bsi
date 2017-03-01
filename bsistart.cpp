@@ -8,7 +8,7 @@ using namespace std;
 void start(char *vm) {
 	char com[100], path[100];
 
-	sprintf(com, "screen -d -m -S %s sh -c 'cd /usr/vm/%s && ./%s.sh';", vm, vm, vm); 
+	sprintf(com, "/usr/local/bin/screen -d -m -S %s sh -c 'cd /usr/vm/%s && ./%s.sh';", vm, vm, vm); 
 	system(com);
 	
 	sleep(1);

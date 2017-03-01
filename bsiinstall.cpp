@@ -1,14 +1,13 @@
 #include <iostream>
 #include <stdlib.h>
 #include <stdio.h>
-#include <cstring>
+#include <fstream>
 using namespace std;
 
 void install() {
 	int os, cpu, mem, disk;
-	char iso[100], tap[100], name[100], com1[300], com2[300], com3[300];
-	char *cmd1, *cmd2;
-	ofstream osconf;
+	char iso[150], tap[100], name[100], com1[300], com2[300];
+	char *filename; 
 
 	cout << "OS:\n";
 	cout << "1. FreeBSD.\n";
@@ -36,17 +35,18 @@ void install() {
 		cout << "Enter name: ";
 		cin >> name;
 		
-		osconf.open
-		
-		sprintf(com1, "cd /usr/vm/ && mkdir %s; cd %s && truncate -s %iG %s.img", name, name, disk, name);
-		sprintf(com2, " && echo '#!/bin/sh' > %s.sh; echo '/usr/share/examples/bhyve/vmrun.sh -c %i -m %i -t %s -d %s.img %s' >> %s.sh && chmod +x %s.sh", name, cpu, mem, tap, name, name, name, name);
-		sprintf(com3, " && /usr/share/examples/bhyve/vmrun.sh -c %i -m %i -t %s -d %s.img -i -I %s %s", cpu, mem, tap, name, iso, name);
-		cmd1 = strcat(com1, com2);
-		cmd2 = strcat(cmd1, com3);
-		system(cmd2);
+		sprintf(com1, "mkdir /usr/vm/%s; truncate -s %iG /usr/vm/%s/%s.img", name, disk, name, name);
+		system(com1);
+		sprintf(filename, "/usr/vm/%s/%s.sh", name, name);
+		ofstream osconf;
+		osconf.open(filename);
+		osconf << "#!/bin/sh\n/usr/share/examples/bhyve/vmrun.sh -c " << cpu << " -m " <<  mem << " -t " << tap << " -d " << name << ".img " << name << "\n";
+		osconf.close();
+		sprintf(com2, "chmod +x /usr/vm/%s/%s.sh; /usr/share/examples/bhyve/vmrun.sh -c %i -m %i -t %s -d /usr/vm/%s/%s.img -i -I %s %s", name, name, cpu, mem, tap, name, name, iso, name);
+		system(com2);
 		
 
 	}
 	
-	else if(os ==2) cout << "Sorry we work!\n";
+	else if(os == 2) cout << "Sorry we work!\n";
 }
