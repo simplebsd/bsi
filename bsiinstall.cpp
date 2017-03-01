@@ -4,7 +4,7 @@
 #include <cstring>
 using namespace std;
 
-int main() {
+void install() {
 	int os, cpu, mem, disk;
 	char iso[100], tap[100], name[100], com1[300], com2[300], com3[300];
 	char *cmd1, *cmd2;
@@ -47,7 +47,4 @@ int main() {
 	}
 	
 	else if(os ==2) cout << "Sorry we work!\n";
-
-	return 0;
-
 }
