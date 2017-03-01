@@ -5,15 +5,9 @@
 #include <unistd.h>
 using namespace std;
 
-int main(int argc, char *argv[]) {
-	char *vm;
+void stop(char *vm) {
 	char com[50], path[100];
 
-	if(argc != 2) {
-		cout << "Usage: bsistop <vm>\n";
-	}
-
-	vm = argv[1];
 	sprintf(com, "bhyvectl --destroy --vm=%s", vm);
 	system(com);
 
@@ -31,5 +25,4 @@ int main(int argc, char *argv[]) {
                 cout << vm << " was not stoped.\n\n";
         }
 
-	return 0;
 }
