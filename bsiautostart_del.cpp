@@ -4,10 +4,18 @@
 using namespace std;
 
 void autostart_del(char *vm) {
-	char com[300];
+	char path[100], com[300];
 
-	sprintf(com, "rm /usr/local/etc/rc.d/%s; sed -i '' '/%s_enable=\"YES\"/d' /etc/rc.conf", vm, vm);
-	system(com);
+	sprintf(path, "/usr/vm//%s/%s.img", vm, vm);
+	ifstream vm_file(path);
 
-	cout << vm << " deleted from autostart.\n";
+	if(vm_file) {
+		sprintf(com, "rm /usr/local/etc/rc.d/%s_bsivm; sed -i '' '/%s_bsivm_enable=\"YES\"/d' /etc/rc.conf", vm, vm);
+		system(com);
+	
+		cout << "\n";
+		cout << vm << " deleted from autostart.\n\n";
+	}
+
+	else cout << "Vm does not exists.\n";
 }

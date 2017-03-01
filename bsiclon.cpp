@@ -12,7 +12,8 @@ void clon(char *vm, char *vm2) {
 	system(com);
 
 	cout << "\n";
-	cout << "VM is cloned.\n\n";
+	cout << "VM is cloned.\n";
+	cout << "Don't forget to change hostname, ip address and tap device.\n\n";
 
 }
 	

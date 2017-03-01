@@ -3,4 +3,4 @@
 using namespace std;
 
 void autostart_show() {
-	system("ls /usr/local
+	system("ls /usr/
