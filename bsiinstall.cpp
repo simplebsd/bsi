@@ -8,6 +8,7 @@ void install() {
 	int os, cpu, mem, disk;
 	char iso[100], tap[100], name[100], com1[300], com2[300], com3[300];
 	char *cmd1, *cmd2;
+	ofstream osconf;
 
 	cout << "OS:\n";
 	cout << "1. FreeBSD.\n";
@@ -34,9 +35,10 @@ void install() {
 		cout << "\n";
 		cout << "Enter name: ";
 		cin >> name;
-
+		
+		osconf.open
+		
 		sprintf(com1, "cd /usr/vm/ && mkdir %s; cd %s && truncate -s %iG %s.img", name, name, disk, name);
-		//system(com1);
 		sprintf(com2, " && echo '#!/bin/sh' > %s.sh; echo '/usr/share/examples/bhyve/vmrun.sh -c %i -m %i -t %s -d %s.img %s' >> %s.sh && chmod +x %s.sh", name, cpu, mem, tap, name, name, name, name);
 		sprintf(com3, " && /usr/share/examples/bhyve/vmrun.sh -c %i -m %i -t %s -d %s.img -i -I %s %s", cpu, mem, tap, name, iso, name);
 		cmd1 = strcat(com1, com2);
