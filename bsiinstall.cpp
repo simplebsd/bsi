@@ -7,8 +7,7 @@ using namespace std;
 
 void install() {
 	int os, cpu, mem, disk;
-	char iso[150], tap[100], name[100], com1[300], com2[300];
-	char *filename, *folder; 
+	char iso[150], tap[100], name[100], com1[300], com2[300], folder[150], filename[150], sh_file[150];
 
 	cout << "OS:\n";
 	cout << "1. FreeBSD.\n";
@@ -45,9 +44,10 @@ void install() {
 		osconf.open(filename);
 		osconf << "#!/bin/sh\n/usr/share/examples/bhyve/vmrun.sh -c " << cpu << " -m " <<  mem << " -t " << tap << " -d " << name << ".img " << name << "\n";
 		osconf.close();
-		sprintf(com2, "chmod +x /usr/vm/%s/%s.sh; /usr/share/examples/bhyve/vmrun.sh -c %i -m %i -t %s -d /usr/vm/%s/%s.img -i -I %s %s", name, name, cpu, mem, tap, name, name, iso, name);
-		system(com2);
-		
+		sprintf(sh_file, "/usr/vm/%s/%s.sh", name, name);
+		chmod(sh_file, S_IRWXU|S_IXGRP|S_IXOTH);
+		sprintf(com2, "/usr/share/examples/bhyve/vmrun.sh -c %i -m %i -t %s -d /usr/vm/%s/%s.img -i -I %s %s", cpu, mem, tap, name, name, iso, name);
+		system(com2);	
 
 	}
 	
