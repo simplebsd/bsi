@@ -2,12 +2,13 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <fstream>
+#include <sys/stat.h>
 using namespace std;
 
 void install() {
 	int os, cpu, mem, disk;
 	char iso[150], tap[100], name[100], com1[300], com2[300];
-	char *filename; 
+	char *filename, *folder; 
 
 	cout << "OS:\n";
 	cout << "1. FreeBSD.\n";
@@ -35,7 +36,9 @@ void install() {
 		cout << "Enter name: ";
 		cin >> name;
 		
-		sprintf(com1, "mkdir /usr/vm/%s; truncate -s %iG /usr/vm/%s/%s.img", name, disk, name, name);
+		sprintf(folder, "/usr/vm/%s", name);
+		mkdir(folder, 0777);
+		sprintf(com1, "truncate -s %iG /usr/vm/%s/%s.img", disk, name, name);
 		system(com1);
 		sprintf(filename, "/usr/vm/%s/%s.sh", name, name);
 		ofstream osconf;

@@ -41,7 +41,10 @@ int main(int argc, char *argv[]) {
 		else if(!strcmp(argv[1], "-ua") && !strcmp(argv[2], vm)) autostart_add(vm);
 		else if(!strcmp(argv[1], "-ud") && !strcmp(argv[2], vm)) autostart_del(vm);
 
-		else cout << "Not parameters\n";
+		else {
+			cout << "\n";
+			cout << "Not enough parameters.\n\n";
+		}
 
 
 	}
