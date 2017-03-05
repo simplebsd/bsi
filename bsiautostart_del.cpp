@@ -19,5 +19,8 @@ void autostart_del(char *vm) {
 		cout << vm << " deleted from autostart.\n\n";
 	}
 
-	else cout << "Vm does not exists.\n";
+	else {
+		cout << "\n";
+		cout << "Vm does not exists.\n\n";
+	}
 }
