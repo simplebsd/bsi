@@ -21,7 +21,26 @@ int main(int argc, char *argv[]) {
 	vm2 = argv[3];
 
 	if(argc < 2)  {
-		cout << "Not enough parameters\n";
+		cout << "\e[1mNAME\e[0m\n";
+		cout << "\tbsi - Bhyve simple installer\n\n";
+		cout << "\e[1mSYNOPSYS\e[0m\n";
+		cout << "\tbsi [ -aliu ] [ -sprdouaud \033[4mVM\033[24m ] [ -c \033[4mVM\033[24m \033[4mNEWVM\033[24m ]\n\n";
+		cout << "\e[1mDESCRIPTION\e[0m\n";
+		cout << "\tBsi is a simple Bhyve VM manager. It helps to install and manage virtual machines on Bhyve hypervisor.\n\n";
+		cout << "\e[1mOPTIONS\e[0m\n";
+		cout << "\t-a\t List all active virtual machines.\n\n";
+		cout << "\t-l\t List all virtual machines.\n\n";
+		cout << "\t-s \033[4mVM\033[24m\t Start a virtual machine.\n\n";
+		cout << "\t-p \033[4mVM\033[24m\t Poweroff a virtual machine.\n\n";
+		cout << "\t-r \033[4mVM\033[24m\t Restart a virtual machine.\n\n";
+		cout << "\t-i\t Install a virtual machine.\n\n";
+		cout << "\t-d \033[4mVM\033[24m\t Delete a virtual machine.\n\n";
+		cout << "\t-c \033[4mVM\033[24m \033[4mNEWVM\033[24m\t Clone a virtual machine.\n\n";
+		cout << "\t-o \033[4mVM\033[24m\t Open a session with virtual machine.\n\n";
+		cout << "\t-u\t List all autostart virtual machines.\n\n";
+		cout << "\t-ua \033[4mVM\033[24m\t Add a virtual machine to autostart.\n\n";
+		cout << "\t-ud \033[4mVM\033[24m\t Delete a virtual machine from autostart.\n\n";
+		
 	}
 
 	else {
@@ -44,7 +63,7 @@ int main(int argc, char *argv[]) {
 
 		else {
 			cout << "\n";
-			cout << "Not enough parameters.\n\n";
+			cout << "Not enough parameters.\test\n\n";
 		}
 
 

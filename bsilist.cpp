@@ -3,5 +3,5 @@
 using namespace std;
 
 void list() {
-	system("ls -1 /usr/vm");
+	system("ls -1 /usr/bsi/vm");
 }

@@ -6,7 +6,7 @@ using namespace std;
 void autostart_del(char *vm) {
 	char path[100], com[300], file[100];;
 
-	sprintf(path, "/usr/vm/%s/%s.img", vm, vm);
+	sprintf(path, "/usr/bsi/vm/%s/%s.img", vm, vm);
 	ifstream vm_file(path);
 
 	if(vm_file) {

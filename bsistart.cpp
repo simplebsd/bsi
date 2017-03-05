@@ -8,11 +8,11 @@ using namespace std;
 void start(char *vm) {
 	char com[100], path_img[100], path_vm[100];
 
-	sprintf(path_img, "/usr/vm/%s/%s.img", vm, vm);
+	sprintf(path_img, "/usr/bsi/vm/%s/%s.img", vm, vm);
 	ifstream vm_img(path_img);
 
 	if(vm_img) {
-		sprintf(com, "/usr/local/bin/screen -d -m -S %s sh -c 'cd /usr/vm/%s && ./%s.sh';", vm, vm, vm); 
+		sprintf(com, "/usr/local/bin/screen -d -m -S %s sh -c 'cd /usr/bsi/vm/%s && ./%s.sh';", vm, vm, vm); 
 		system(com);
 	
 		sleep(1);

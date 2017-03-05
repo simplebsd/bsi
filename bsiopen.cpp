@@ -8,7 +8,7 @@ using namespace std;
 void open(char *vm) {
 	char com[50], path_img[100];
 	
-	sprintf(path_img, "/usr/vm/%s/%s.img", vm, vm);
+	sprintf(path_img, "/usr/bsi/vm/%s/%s.img", vm, vm);
 	ifstream vm_img(path_img);
 
 	if(vm_img) {

@@ -6,13 +6,13 @@ using namespace std;
 void clon(char *vm, char *vm2) {
 	char com[300], path_img[100];
 
-	sprintf(path_img, "/usr/vm/%s/%s.img", vm, vm);
+	sprintf(path_img, "/usr/bsi/vm/%s/%s.img", vm, vm);
 	ifstream vm_img(path_img);
 
 	if(vm_img) {
 		cout << "\n";
 
-		sprintf(com, "/usr/local/bin/rsync -a --info=progress2 /usr/vm/%s/* /usr/vm/%s; mv /usr/vm/%s/%s.img /usr/vm/%s/%s.img; mv /usr/vm/%s/%s.sh /usr/vm/%s/%s.sh; sed -i '' 's/%s/%s/g' /usr/vm/%s/%s.sh", vm, vm2, vm2, vm, vm2, vm2, vm2, vm, vm2, vm2, vm, vm2, vm2, vm2);  
+		sprintf(com, "/usr/local/bin/rsync -a --info=progress2 /usr/bsi/vm/%s/* /usr/bsi/vm/%s; mv /usr/bsi/vm/%s/%s.img /usr/bsi/vm/%s/%s.img; mv /usr/bsi/vm/%s/%s.sh /usr/bsi/vm/%s/%s.sh; sed -i '' 's/%s/%s/g' /usr/bsi/vm/%s/%s.sh", vm, vm2, vm2, vm, vm2, vm2, vm2, vm, vm2, vm2, vm, vm2, vm2, vm2);  
 		system(com);
 
 		cout << "\n";

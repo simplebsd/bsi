@@ -35,18 +35,18 @@ void install() {
 		cout << "Enter name: ";
 		cin >> name;
 		
-		sprintf(folder, "/usr/vm/%s", name);
+		sprintf(folder, "/usr/bsi/vm/%s", name);
 		mkdir(folder, 0777);
-		sprintf(com1, "truncate -s %iG /usr/vm/%s/%s.img", disk, name, name);
+		sprintf(com1, "truncate -s %iG /usr/bsi/vm/%s/%s.img", disk, name, name);
 		system(com1);
-		sprintf(filename, "/usr/vm/%s/%s.sh", name, name);
+		sprintf(filename, "/usr/bsi/vm/%s/%s.sh", name, name);
 		ofstream osconf;
 		osconf.open(filename);
 		osconf << "#!/bin/sh\n/usr/share/examples/bhyve/vmrun.sh -c " << cpu << " -m " <<  mem << " -t " << tap << " -d " << name << ".img " << name << "\n";
 		osconf.close();
-		sprintf(sh_file, "/usr/vm/%s/%s.sh", name, name);
+		sprintf(sh_file, "/usr/bsi/vm/%s/%s.sh", name, name);
 		chmod(sh_file, S_IRWXU|S_IXGRP|S_IXOTH);
-		sprintf(com2, "/usr/share/examples/bhyve/vmrun.sh -c %i -m %i -t %s -d /usr/vm/%s/%s.img -i -I %s %s", cpu, mem, tap, name, name, iso, name);
+		sprintf(com2, "/usr/share/examples/bhyve/vmrun.sh -c %i -m %i -t %s -d /usr/bsi/vm/%s/%s.img -i -I %s %s", cpu, mem, tap, name, name, iso, name);
 		system(com2);	
 
 	}

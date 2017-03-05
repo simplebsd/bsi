@@ -1,6 +1,7 @@
 install:
 	pkg ins -y screen rsync
-	mkdir -p /usr/vm/iso
+	mkdir -p /usr/bsi/vm
+	mkdir /usr/bsi/iso
 	clang++ bsi.cpp -o /usr/local/bin/bsi
 
 deinstall:
