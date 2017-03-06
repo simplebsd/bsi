@@ -63,7 +63,8 @@ int main(int argc, char *argv[]) {
 
 		else {
 			cout << "\n";
-			cout << "Not enough parameters.\test\n\n";
+			cout << "Not enough parameters.\n";
+			cout << "Run bsi without parameters to see the manual.\n\n";
 		}
 
 
