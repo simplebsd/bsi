@@ -7,8 +7,12 @@
 using namespace std;
 
 void del(char *vm) {
-	char com[100], path_img[100], folder_vm[50], file_img[50], file_sh[50], path_vm[100], folder_path[100];
+	char com[100], path_img[100], folder_vm[50], file_img[50], file_sh[50], path_vm[100], folder_path[100], a_vm[100];
 	struct stat st;
+
+	sprintf(a_vm, "/dev/vmm/%s", vm);
+	fstream vm_file(a_vm);
+	if(!vm_file) {
 	sprintf(folder_path, "/usr/bsi/vm/%s", vm);
 
 	sprintf(path_img, "/usr/bsi/vm/%s/%s.img", vm, vm);
@@ -47,5 +51,12 @@ void del(char *vm) {
 	else {
 		cout << "\n";	
 		cout << "VM does not exists.\n\n";
+	}
+
+	}
+
+	else {
+		cout << "\n";
+		cout << "First stop VM, and then delete.\n\n";
 	}
 }
