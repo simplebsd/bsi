@@ -12,46 +12,48 @@ void del(char *vm) {
 
 	sprintf(a_vm, "/dev/vmm/%s", vm);
 	fstream vm_file(a_vm);
+
 	if(!vm_file) {
-	sprintf(folder_path, "/usr/bsi/vm/%s", vm);
+		sprintf(folder_path, "/usr/bsi/vm/%s", vm);
 
-	sprintf(path_img, "/usr/bsi/vm/%s/%s.img", vm, vm);
-	ifstream vm_img(path_img);
+		sprintf(path_img, "/usr/bsi/vm/%s/%s.img", vm, vm);
+		ifstream vm_img(path_img);
 
-	if(vm_img) {
-		sprintf(folder_vm, "/usr/bsi/vm/%s", vm);
-		sprintf(file_img, "/usr/bsi/vm/%s/%s.img", vm, vm);
-		sprintf(file_sh, "/usr/bsi/vm/%s/%s.sh", vm, vm);
-		remove(file_img);
-		remove(file_sh);
-		rmdir(folder_vm);
+		if(vm_img) {
+			sprintf(folder_vm, "/usr/bsi/vm/%s", vm);
+			sprintf(file_img, "/usr/bsi/vm/%s/%s.img", vm, vm);
+			sprintf(file_sh, "/usr/bsi/vm/%s/%s.sh", vm, vm);
+			remove(file_img);
+			remove(file_sh);
+			rmdir(folder_vm);
 		
-		sprintf(com, "bhyvectl --destroy --vm=%s", vm);
-		system(com);
+			sprintf(com, "bhyvectl --destroy --vm=%s", vm);
+			system(com);
 		
-		sprintf(path_vm, "/usr/bsi/vm/%s/%s.img", vm, vm);
-		ifstream vm_file(path_vm);
-		if(!vm_file) {
-			cout << "\n";
-			cout << vm << " is deleted.\n\n";
+			sprintf(path_vm, "/usr/bsi/vm/%s/%s.img", vm, vm);
+			ifstream vm_file(path_vm);
 
-			if(stat(folder_path, &st) == 0) {
-                        	cout << "\n";
-                        	cout << "But folder not deleted.\nYou may remove it manually.\n\n";
+			if(!vm_file) {
+				cout << "\n";
+				cout << vm << " is deleted.\n\n";
+
+				if(stat(folder_path, &st) == 0) {
+       		                 	cout << "\n";
+       		                 	cout << "But folder not deleted.\nYou may remove it manually.\n\n";
+				}
+
+               		 }
+
+			else {
+				cout << "\n";
+				cout << vm << " not deleted.\n\n";
 			}
-
-                }
+		}
 
 		else {
-			cout << "\n";
-			cout << vm << " not deleted.\n\n";
+			cout << "\n";	
+			cout << "VM does not exists.\n\n";
 		}
-	}
-
-	else {
-		cout << "\n";	
-		cout << "VM does not exists.\n\n";
-	}
 
 	}
 
