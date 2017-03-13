@@ -7,7 +7,7 @@ using namespace std;
 
 void install() {
 	int os, cpu, mem, disk;
-	char iso[150], tap[100], name[100], com1[300], com2[300], folder[150], filename[150], sh_file[150];
+	char iso[150], tap[100], name[100], com1[300], com2[300], folder[150], filename[150], ufilename[150], sh_file[150], ush_file[300];
 
 	cout << "OS:\n";
 	cout << "1. FreeBSD.\n";
@@ -20,7 +20,7 @@ void install() {
 		cout << "Enter full path for install iso: ";
 		cin >> iso;
 		cout << "\n";
-		cout << "Enter number of cores CPU(1-4): ";
+		cout << "Enter number of cores CPU(1-16): ";
 		cin >> cpu;
 		cout << "\n";
 		cout << "Enter size of memory(MB): ";
@@ -51,5 +51,38 @@ void install() {
 
 	}
 	
-	else if(os == 2) cout << "Sorry we work!\n";
+	else if(os == 2) {
+		cout << "Enter full path for install iso: ";
+                cin >> iso;
+                cout << "\n";
+                cout << "Enter number of cores CPU(1-16): ";
+                cin >> cpu;
+                cout << "\n";
+                cout << "Enter size of memory(MB): ";
+                cin >> mem;
+                cout << "\n";
+                cout << "Enter size of disk(GB): ";
+                cin >> disk;
+                cout << "\n";
+                cout << "Enter tap device: ";
+                cin >> tap;
+                cout << "\n";
+                cout << "Enter name: ";
+                cin >> name;
+
+		sprintf(folder, "/usr/bsi/vm/%s", name);
+                mkdir(folder, 0777);
+                sprintf(com1, "truncate -s %iG /usr/bsi/vm/%s/%s.img", disk, name, name);
+                system(com1);
+		sprintf(filename, "/usr/bsi/vm/%s/device.map", name);
+		ofstream osconf;
+                osconf.open(filename);
+		osconf << "(hd0) /usr/bsi/vm/" << name << "/" << name << ".img\n(cd0) " << iso << "\n";
+		osconf.close();
+		sprintf(ufilename, "/usr/bsi/vm/%s/%s.sh", name, name);
+		ofstream ush_file;
+		ush_file.open(ufilename);
+		ush_file << "#!/bin/sh\nwhile [ 1 ]; do\nbhyvectl --destroy --vm=" << name << "\ngrub-bhyve -r hd0,msdos1 -m /usr/bsi/ << name << "/device.map -M " << mem << " " << name << "\n\nbhyve -c << cpu << " -m " << mem << " -H -P -A \\\n-l com1,stdio \\\n-s 0:0,hostbridge \\\n-s 1:0,lpc \\\n-s 2:0,virtio-net," << tap << "\\\n-s 4,virtio-blk,/usr/bsi/vm/" << name << "/" << name << ".img " << name << "\nbhyve_exit=$?\nif [$bhyve_exit -ne 0]; then\nbreak\nfi\ndone\nbhyvecdtl --destroy --vm=" << name << "\n";
+		ush_file.close();
+	}
 }
