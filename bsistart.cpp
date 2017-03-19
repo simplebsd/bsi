@@ -22,6 +22,11 @@ void start(char *vm) {
 		if(vm_file) {
 			cout << "\n";
 			cout << vm << " is started.\n\n";
+			
+			ofstream logfile;
+			logfile.open("var/log/bsi/bsi.log", ios::app);
+			logfile << 
+			logfile.close();
 		}
 
 		else {
