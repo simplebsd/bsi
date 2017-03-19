@@ -87,7 +87,7 @@ void install() {
 		chmod(uifilename, S_IRWXU|S_IXGRP|S_IXOTH);
 		sprintf(ifile, "/usr/bsi/vm/%s/./%s-install.sh", name, name);
 		system(ifile);
-		//remove(uifilename);
+		remove(uifilename);
 		sprintf(ufilename, "/usr/bsi/vm/%s/%s.sh", name, name);
 		ofstream ush_file;
 		ush_file.open(ufilename);
