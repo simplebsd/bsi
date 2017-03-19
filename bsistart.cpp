@@ -23,10 +23,10 @@ void start(char *vm) {
 			cout << "\n";
 			cout << vm << " is started.\n\n";
 			
-			ofstream logfile;
+/*			ofstream logfile;
 			logfile.open("var/log/bsi/bsi.log", ios::app);
 			logfile << 
-			logfile.close();
+			logfile.close();i*/
 		}
 
 		else {
