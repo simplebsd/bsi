@@ -12,6 +12,7 @@
 #include "bsiautostart_add.cpp"
 #include "bsiautostart_del.cpp"
 #include "bsiautostart_list.cpp"
+#include "bsiconf.cpp"
 using namespace std;
 
 char *vm, *vm2;
@@ -42,6 +43,7 @@ int main(int argc, char *argv[]) {
 		cout << "\t-u\t List all autostart virtual machines.\n\n";
 		cout << "\t-ua \033[4mVM\033[24m\t Add a virtual machine to autostart.\n\n";
 		cout << "\t-ud \033[4mVM\033[24m\t Delete a virtual machine from autostart.\n\n";
+		cout << "\t-k \033[4mVM\033[24m\t Show configuration of virtual machine.\n\n";
 		
 	}
 
@@ -63,6 +65,7 @@ int main(int argc, char *argv[]) {
 		else if(!strcmp(argv[1], "-u")) autostart_list();
 		else if(!strcmp(argv[1], "-ua") && !strcmp(argv[2], vm)) autostart_add(vm);
 		else if(!strcmp(argv[1], "-ud") && !strcmp(argv[2], vm)) autostart_del(vm);
+		else if(!strcmp(argv[1], "-k") && !strcmp(argv[2], vm)) conf(vm);
 
 		else {
 			cout << "\n";

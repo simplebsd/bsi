@@ -3,8 +3,8 @@
 #include <fstream>
 using namespace std;
 
-void bsiconf(char *vm) {
-	char path_img[150], com[250], os[50];
+void conf(char *vm) {
+	char path_img[150], com[250], os[100];
 
 	sprintf(path_img, "/usr/bsi/vm/%s/%s.img", vm, vm);
 	ifstream vm_img(path_img);
@@ -12,9 +12,9 @@ void bsiconf(char *vm) {
 	if(vm_img) {
 
 		sprintf(com, "/bin/cat /usr/bsi/vm/%s/%s.sh | /usr/bin/grep OS | /usr/bin/cut -c 6-15", vm, vm);
-		os = system(com);
+		system(com);
+
 		
-		cout << "OS: " << os;
 
 	}
 
