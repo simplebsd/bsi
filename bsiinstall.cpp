@@ -42,7 +42,7 @@ void install() {
 		sprintf(filename, "/usr/bsi/vm/%s/%s.sh", name, name);
 		ofstream osconf;
 		osconf.open(filename);
-		osconf << "#!/bin/sh\n\n#OS: FreeBSD\nCPU: " << cpu << "\nMemory: " << mem << "\n\n/usr/share/examples/bhyve/vmrun.sh -c " << cpu << " -m " <<  mem << " -t " << tap << " -d " << name << ".img " << name << "\n";
+		osconf << "#!/bin/sh\n\n#OS: FreeBSD\nCPU(cores): " << cpu << "\nMemory(MB): " << mem << "\n\n/usr/share/examples/bhyve/vmrun.sh -c " << cpu << " -m " <<  mem << " -t " << tap << " -d " << name << ".img " << name << "\n";
 		osconf.close();
 		sprintf(sh_file, "/usr/bsi/vm/%s/%s.sh", name, name);
 		chmod(sh_file, S_IRWXU|S_IXGRP|S_IXOTH);
