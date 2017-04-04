@@ -1,5 +1,7 @@
 #include <iostream>
 #include <cstring>
+#include <stdio.h>
+#include <fstream>
 #include "bsiactive.cpp"
 #include "bsistart.cpp"
 #include "bsistop.cpp"

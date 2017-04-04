@@ -1,8 +1,3 @@
-#include <iostream>
-#include <stdio.h>
-#include <fstream>
-using namespace std;
-
 void conf(char *vm) {
 	char path_img[150], os[250], cpu[250], mem[250], disk[250];
 
