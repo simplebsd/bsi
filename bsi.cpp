@@ -29,7 +29,7 @@ int main(int argc, char *argv[]) {
 		cout << "\e[1mNAME\e[0m\n";
 		cout << "\tbsi - Bhyve simple installer\n\n";
 		cout << "\e[1mSYNOPSYS\e[0m\n";
-		cout << "\tbsi [ -alfaiu ] [ -sfrdouaud \033[4mVM\033[24m ] [ -c \033[4mVM\033[24m \033[4mNEWVM\033[24m ]\n\n";
+		cout << "\tbsi [ -alfaiuk ] [ -sfrdouaud \033[4mVM\033[24m ] [ -c \033[4mVM\033[24m \033[4mNEWVM\033[24m ]\n\n";
 		cout << "\e[1mDESCRIPTION\e[0m\n";
 		cout << "\tBsi is a simple Bhyve VM manager. It helps to install and manage virtual machines on Bhyve hypervisor.\n\n";
 		cout << "\e[1mOPTIONS\e[0m\n";
