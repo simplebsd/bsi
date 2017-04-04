@@ -2,6 +2,7 @@
 #include <cstring>
 #include <stdio.h>
 #include <fstream>
+#include <stdlib.h>
 #include "bsiactive.cpp"
 #include "bsistart.cpp"
 #include "bsistop.cpp"
