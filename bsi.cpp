@@ -16,6 +16,7 @@
 #include "bsiautostart_del.cpp"
 #include "bsiautostart_list.cpp"
 #include "bsiconf.cpp"
+#include "bsibackup.cpp"
 using namespace std;
 
 char *vm, *vm2;
@@ -29,7 +30,7 @@ int main(int argc, char *argv[]) {
 		cout << "\e[1mNAME\e[0m\n";
 		cout << "\tbsi - Bhyve simple installer\n\n";
 		cout << "\e[1mSYNOPSYS\e[0m\n";
-		cout << "\tbsi [ -alfaiuk ] [ -sfrdouaud \033[4mVM\033[24m ] [ -c \033[4mVM\033[24m \033[4mNEWVM\033[24m ]\n\n";
+		cout << "\tbsi [ -alfaiukb ] [ -sfrdouaud \033[4mVM\033[24m ] [ -c \033[4mVM\033[24m \033[4mNEWVM\033[24m ]\n\n";
 		cout << "\e[1mDESCRIPTION\e[0m\n";
 		cout << "\tBsi is a simple Bhyve VM manager. It helps to install and manage virtual machines on Bhyve hypervisor.\n\n";
 		cout << "\e[1mOPTIONS\e[0m\n";
@@ -47,6 +48,7 @@ int main(int argc, char *argv[]) {
 		cout << "\t-ua \033[4mVM\033[24m\t Add a virtual machine to autostart.\n\n";
 		cout << "\t-ud \033[4mVM\033[24m\t Delete a virtual machine from autostart.\n\n";
 		cout << "\t-k \033[4mVM\033[24m\t Show configuration of virtual machine.\n\n";
+		cout << "\t-b\t Show backup information of virtual machines.\n\n";
 		
 	}
 
@@ -69,6 +71,7 @@ int main(int argc, char *argv[]) {
 		else if(!strcmp(argv[1], "-ua") && !strcmp(argv[2], vm)) autostart_add(vm);
 		else if(!strcmp(argv[1], "-ud") && !strcmp(argv[2], vm)) autostart_del(vm);
 		else if(!strcmp(argv[1], "-k") && !strcmp(argv[2], vm)) conf(vm);
+		else if(!strcmp(argv[1], "-b")) backup();
 
 		else {
 			cout << "\n";
