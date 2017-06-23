@@ -18,6 +18,7 @@
 #include "bsiautostart_list.cpp"
 #include "bsidownloadiso.cpp"
 #include "bsisetup.cpp"
+#include "bsiupdate.cpp"
 //#include "bsiconf.cpp"
 //#include "bsibackup.cpp"
 using namespace std;
@@ -33,7 +34,7 @@ int main(int argc, char *argv[]) {
 		cout << "\e[1mNAME\e[0m\n";
 		cout << "\tbsi - Bhyve simple installer\n\n";
 		cout << "\e[1mSYNOPSYS\e[0m\n";
-		cout << "\tbsi [ -alfaiukbdw ] [ -sfrdouaud \033[4mVM\033[24m ] [ -c \033[4mVM\033[24m \033[4mNEWVM\033[24m ]\n\n";
+		cout << "\tbsi [ -alfaiukbdwstup ] [ -sfrdouaud \033[4mVM\033[24m ] [ -c \033[4mVM\033[24m \033[4mNEWVM\033[24m ]\n\n";
 		cout << "\e[1mDESCRIPTION\e[0m\n";
 		cout << "\tBsi is a simple Bhyve VM manager. It helps to install and manage virtual machines on Bhyve hypervisor.\n\n";
 		cout << "\e[1mOPTIONS\e[0m\n";
@@ -54,6 +55,7 @@ int main(int argc, char *argv[]) {
 //		cout << "\t-b\t Show backup information of virtual machines.\n\n";
 		cout << "\t-dw\t Download installation iso.\n\n";
 		cout << "\t-st\t Setup bhyve configuration files.\n\n";
+		cout << "\t-up\t Setup bhyve configuration files.\n\n";
 		
 	}
 
@@ -79,6 +81,7 @@ int main(int argc, char *argv[]) {
 //		else if(!strcmp(argv[1], "-b")) backup();
 		else if(!strcmp(argv[1], "-dw")) diso();
 		else if(!strcmp(argv[1], "-st")) setup();
+		else if(!strcmp(argv[1], "-up")) update();
 
 		else {
 			cout << "\n";
