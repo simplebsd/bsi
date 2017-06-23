@@ -1,5 +1,5 @@
 install:
-	pkg ins -y screen rsync
+	pkg ins -y screen rsync grub2-bhyve
 	mkdir -p /usr/bsi/vm
 	mkdir -p /usr/bsi/iso
 	mkdir -p /usr/local/etc/bsi
@@ -14,6 +14,6 @@ install:
 	rm tap
 
 deinstall:
-	pkg del -y screen rsync
+	pkg del -y screen rsync grub2-bhyve
 	pkg autoremove -y
 	rm /usr/local/bin/bsi
