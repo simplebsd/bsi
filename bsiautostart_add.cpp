@@ -1,10 +1,3 @@
-#include <iostream>
-#include <stdlib.h>
-#include <stdio.h>
-#include <fstream>
-#include <sys/stat.h>
-using namespace std;
-
 void autostart_add(char *vm) {
 	char path[200], filename[300], rc_file[50];
 

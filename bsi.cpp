@@ -17,6 +17,7 @@
 #include "bsiautostart_del.cpp"
 #include "bsiautostart_list.cpp"
 #include "bsidownloadiso.cpp"
+#include "bsisetup.cpp"
 //#include "bsiconf.cpp"
 //#include "bsibackup.cpp"
 using namespace std;
@@ -52,6 +53,7 @@ int main(int argc, char *argv[]) {
 //		cout << "\t-k \033[4mVM\033[24m\t Show configuration of virtual machine.\n\n";
 //		cout << "\t-b\t Show backup information of virtual machines.\n\n";
 		cout << "\t-dw\t Download installation iso.\n\n";
+		cout << "\t-st\t Setup bhyve configuration files.\n\n";
 		
 	}
 
@@ -76,6 +78,7 @@ int main(int argc, char *argv[]) {
 //		else if(!strcmp(argv[1], "-k") && !strcmp(argv[2], vm)) conf(vm);
 //		else if(!strcmp(argv[1], "-b")) backup();
 		else if(!strcmp(argv[1], "-dw")) diso();
+		else if(!strcmp(argv[1], "-st")) setup();
 
 		else {
 			cout << "\n";
