@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <fstream>
 #include <stdlib.h>
+#include <sys/stat.h>
 #include "bsiactive.cpp"
 #include "bsistart.cpp"
 #include "bsistop.cpp"
