@@ -1,3 +1,5 @@
+using namespace std;
+
 void start(char *vm) {
 	char com[100], path_img[100], path_vm[100];
 

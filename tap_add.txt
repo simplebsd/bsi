@@ -1,0 +1,2 @@
+sed -i '' '/^cloned_interfaces/s/$/ tap100/' /etc/rc.conf
+sed -i '' '/^cloned_interfaces/s/.$//' /etc/rc.conf
