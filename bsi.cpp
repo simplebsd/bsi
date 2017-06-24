@@ -4,6 +4,7 @@
 #include <fstream>
 #include <stdlib.h>
 #include <sys/stat.h>
+#include <unistd.h>
 #include "bsiactive.cpp"
 #include "bsistart.cpp"
 #include "bsistop.cpp"

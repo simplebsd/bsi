@@ -1,8 +1,3 @@
-#include <iostream>
-#include <stdlib.h>
-#include <stdio.h>
-using namespace std;
-
 void clon(char *vm, char *vm2) {
 	char com[300], path_img[100], img1[100], img2[100], sh1[100], sh2[100];
 

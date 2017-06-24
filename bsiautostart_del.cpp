@@ -1,8 +1,3 @@
-#include <iostream>
-#include <stdlib.h>
-#include <stdio.h>
-using namespace std;
-
 void autostart_del(char *vm) {
 	char path[100], com[300], file[100];;
 

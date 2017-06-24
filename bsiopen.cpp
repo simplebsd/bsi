@@ -1,10 +1,3 @@
-#include <iostream>
-#include <stdlib.h>
-#include <stdio.h>
-#include <fstream>
-#include <unistd.h>
-using namespace std;
-
 void open(char *vm) {
 	char com[50], path_img[100];
 	

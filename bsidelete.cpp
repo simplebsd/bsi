@@ -1,11 +1,3 @@
-#include <iostream>
-#include <stdlib.h>
-#include <fstream>
-#include <stdio.h>
-#include <unistd.h>
-#include <sys/stat.h>
-using namespace std;
-
 void del(char *vm) {
 	char com[100], com2[150], path_img[100], path_vm[100], a_vm[100];
 	struct stat st;
