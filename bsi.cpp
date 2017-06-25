@@ -56,7 +56,7 @@ int main(int argc, char *argv[]) {
 //		cout << "\t-b\t Show backup information of virtual machines.\n\n";
 		cout << "\t-dw\t Download installation iso.\n\n";
 		cout << "\tsetup\t Setup bhyve configuration files.\n\n";
-		cout << "\t-up\t Setup bhyve configuration files.\n\n";
+		cout << "\tupdate\t Setup bhyve configuration files.\n\n";
 		
 	}
 
