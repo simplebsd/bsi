@@ -1,6 +1,6 @@
 void install() {
 	int os, cpu, mem, disk, t, nt;
-	char iso[150], tap[100], name[100], com1[300], com2[300], folder[150], filename[150], uifilename[150], ifile[100], ufilename[150], sh_file[150], ush_file[300], br[150];
+	char iso[150], tap[100], name[100], com1[300], com2[300], folder[150], filename[150], uifilename[150], ifile[100], ufilename[150], sh_file[150], ush_file[300], br1[150], br2[150], atp[300];
 
 	cout << "OS:\n";
 	cout << "1. FreeBSD.\n";
@@ -53,8 +53,14 @@ void install() {
                 tapw << nt;
                 tapw.close();
 		
-		sprintf(br, "ifconfig tap%i create && ifconfig bridge addm tap%i up", nt, nt);
-		system(br);
+		sprintf(br1, "/sbin/ifconfig %s create", tap);
+		sprintf(br2, "/sbin/ifconfig bridge0 addm %s up", tap);
+		system(br1);
+		system(br2);
+		system("sed -i '' '/^cloned_interfaces/s/.$//' /etc/rc.conf");
+		system("sed -i '' '/^ifconfig_bridge0/s/...$//' /etc/rc.conf");
+		sprintf(atp, "sed -i '' '/^cloned_interfaces/s/$/ %s\"/' /etc/rc.conf && sed -i '' '/^ifconfig_bridge0/s/$/addm %s up\"/' /etc/rc.conf", tap, tap); 
+		system(atp);
 	}
 	
 	else if(os == 2) {
@@ -110,8 +116,5 @@ void install() {
 		ofstream tapw("/usr/local/etc/bsi/tap.conf");
                 tapw << nt;
                 tapw.close();
-		
-		sprintf(br, "ifconfig tap%i create && ifconfig bridge addm tap%i up", nt, nt);
-                system(br);
 	}
 }

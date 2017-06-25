@@ -17,3 +17,6 @@ deinstall:
 	pkg del -y screen rsync grub2-bhyve
 	pkg autoremove -y
 	rm /usr/local/bin/bsi
+
+make update:
+	clang++ bsi.cpp -o /usr/local/bin/bsi
