@@ -24,7 +24,7 @@ void conf(char *vm) {
 		system(disk);
 
 		sprintf(net, "/bin/cat /usr/bsi/vm/%s/%s.sh | /usr/bin/grep Network | /usr/bin/cut -c 2-25", vm, vm);
-                system(disk);
+                system(net);
 
 		cout << "\n";
 	}
