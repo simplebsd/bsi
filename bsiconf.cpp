@@ -1,5 +1,5 @@
 void conf(char *vm) {
-	char path_img[150], os[250], cpu[250], mem[250], disk[250];
+	char path_img[150], os[250], cpu[250], mem[250], disk[250], net[250];
 
 	sprintf(path_img, "/usr/bsi/vm/%s/%s.img", vm, vm);
 	ifstream vm_img(path_img);
@@ -22,6 +22,9 @@ void conf(char *vm) {
 
 		sprintf(disk, "/bin/cat /usr/bsi/vm/%s/%s.sh | /usr/bin/grep Disk | /usr/bin/cut -c 2-25", vm, vm);
 		system(disk);
+
+		sprintf(net, "/bin/cat /usr/bsi/vm/%s/%s.sh | /usr/bin/grep Network | /usr/bin/cut -c 2-25", vm, vm);
+                system(disk);
 
 		cout << "\n";
 	}
