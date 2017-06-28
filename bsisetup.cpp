@@ -10,6 +10,9 @@ void setup() {
 		loader.open("/boot/loader.conf", ios::app);
 		loader << "vmm_load=\"YES\"\nif_bridge_load=\"YES\"\nif_tap_load=\"YES\"\n";
 		loader.close();
+		system("kldload vmm");
+		system("kldload if_tap");
+		system("kldload if_bridge");
 
 		cout << "Setup is finished.\n";
 	}
