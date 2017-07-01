@@ -1,5 +1,5 @@
 void clon(char *vm, char *vm2) {
-	char com[300], path_img[100], img1[100], img2[100], sh1[100], sh2[100], old_tap[100], new_tap[100], check_tap[100], change_tap[350], br1[150], br2[150], atp[300];
+	char com[300], path_img[100], img1[100], img2[100], sh1[100], sh2[100], old_tap[100], new_tap[100], check_tap[250], change_tap[350], br1[150], br2[150], atp[300];
 	int t, nt;
 
 	sprintf(path_img, "/usr/bsi/vm/%s/%s.img", vm, vm);
