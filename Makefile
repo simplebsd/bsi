@@ -5,7 +5,9 @@ install:
 	mkdir -p /usr/bsi/update
 	mkdir -p /usr/local/etc/bsi
 	touch /usr/local/etc/bsi/tap.conf
+	touch /var/log/bsi.log
 	chmod a+x /usr/share/examples/bhyve/vmrun.sh
+	chmod a+w /var/log/bsi.log
 	clang++ bsi.cpp -o /usr/local/bin/bsi
 	clang++ s_wipe.cpp -o s_wipe
 	clang++ tap.cpp -o tap
