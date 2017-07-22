@@ -1,3 +1,3 @@
 void active() {
-	system("/usr/local/bin/screen -list");
+	system("ls -1 /tmp/screens/S-root");
 }
