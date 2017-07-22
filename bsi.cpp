@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <sys/stat.h>
 #include <unistd.h>
+#include <time.h>
 #include "active.cpp"
 #include "start.cpp"
 #include "stop.cpp"
