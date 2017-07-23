@@ -8,6 +8,6 @@ void active() {
 		system("ls -1 /dev/vmm");
 	}
 
-	else std::cout << "No vm's are works\n";
+	else std::cout << "No running vm's\n";
 
 }
