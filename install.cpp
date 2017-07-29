@@ -34,6 +34,19 @@ void install() {
 		cout << "\n";
 		cout << "Enter name: ";
 		cin >> name;
+
+		ofstream tapw("/usr/local/etc/bsi/tap.conf");
+                tapw << nt;
+                tapw.close();
+		
+		sprintf(br1, "/sbin/ifconfig %s create", tap);
+		sprintf(br2, "/sbin/ifconfig bridge0 addm %s up", tap);
+		system(br1);
+		system(br2);
+		system("sed -i '' '/^cloned_interfaces/s/.$//' /etc/rc.conf");
+		system("sed -i '' '/^ifconfig_bridge0/s/...$//' /etc/rc.conf");
+		sprintf(atp, "sed -i '' '/^cloned_interfaces/s/$/ %s\"/' /etc/rc.conf && sed -i '' '/^ifconfig_bridge0/s/$/addm %s up\"/' /etc/rc.conf", tap, tap); 
+system(atp);
 		
 		sprintf(folder, "/usr/bsi/vm/%s", name);
 		mkdir(folder, 0777);
@@ -48,19 +61,6 @@ void install() {
 		chmod(sh_file, S_IRWXU|S_IXGRP|S_IXOTH);
 		sprintf(com2, "/usr/share/examples/bhyve/vmrun.sh -c %i -m %i -t %s -d /usr/bsi/vm/%s/%s.img -i -I %s %s", cpu, mem, tap, name, name, iso, name);
 		system(com2);	
-
-		ofstream tapw("/usr/local/etc/bsi/tap.conf");
-                tapw << nt;
-                tapw.close();
-		
-		sprintf(br1, "/sbin/ifconfig %s create", tap);
-		sprintf(br2, "/sbin/ifconfig bridge0 addm %s up", tap);
-		system(br1);
-		system(br2);
-		system("sed -i '' '/^cloned_interfaces/s/.$//' /etc/rc.conf");
-		system("sed -i '' '/^ifconfig_bridge0/s/...$//' /etc/rc.conf");
-		sprintf(atp, "sed -i '' '/^cloned_interfaces/s/$/ %s\"/' /etc/rc.conf && sed -i '' '/^ifconfig_bridge0/s/$/addm %s up\"/' /etc/rc.conf", tap, tap); 
-		system(atp);
 	}
 	
 	else if(os == 2) {
@@ -87,6 +87,19 @@ void install() {
                 cout << "\n";
                 cout << "Enter name: ";
                 cin >> name;
+
+		ofstream tapwu("/usr/local/etc/bsi/tap.conf");
+                tapwu << nt;
+                tapwu.close();
+
+                sprintf(br1, "/sbin/ifconfig %s create", tap);
+                sprintf(br2, "/sbin/ifconfig bridge0 addm %s up", tap);
+                system(br1);
+                system(br2);
+                system("sed -i '' '/^cloned_interfaces/s/.$//' /etc/rc.conf");
+                system("sed -i '' '/^ifconfig_bridge0/s/...$//' /etc/rc.conf");
+		sprintf(atp, "sed -i '' '/^cloned_interfaces/s/$/ %s\"/' /etc/rc.conf && sed -i '' '/^ifconfig_bridge0/s/$/addm %s up\"/' /etc/rc.conf", tap, tap); 
+		system(atp);
 
 		sprintf(folder, "/usr/bsi/vm/%s", name);
                 mkdir(folder, 0777);
