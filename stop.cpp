@@ -11,7 +11,7 @@ void stop(char *vm) {
 
 	if(vm_img) {
 
-		sprintf(com, "bhyvectl --destroy --vm=%s", vm);
+		sprintf(com, "bhyvectl --destroy --vm=%s > /dev/null 2>&1", vm);
 		system(com);
 
 		sleep(1);

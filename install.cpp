@@ -122,7 +122,7 @@ system(atp);
 		sprintf(ufilename, "/usr/bsi/vm/%s/%s.sh", name, name);
 		ofstream ush_file;
 		ush_file.open(ufilename);
-		ush_file << "#!/bin/sh\nwhile [ 1 ]; do\nbhyvectl --destroy --vm=" << name << "\ngrub-bhyve -r hd0,msdos1 -m /usr/bsi/vm/" << name << "/device.map -M " << mem << " " << name << "\n\nbhyve -c " << cpu << " -m " << mem << " -H -P -A \\\n-l com1,stdio \\\n-s 0:0,hostbridge \\\n-s 1:0,lpc \\\n-s 2:0,virtio-net," << tap << " \\\n-s 4,virtio-blk,/usr/bsi/vm/" << name << "/" << name << ".img " << name << " \nbhyve_exit=$?\nif [$bhyve_exit -ne 0]; then\nbreak\nfi\ndone\nbhyvectl --destroy --vm=" << name << "\n";
+		ush_file << "#!/bin/sh\n\n#OS: Ubuntu\n#CPU(cores): " << cpu << "\n#Memory(MB): " << mem << "\n#Disk(GB): " << disk << "\n#Network : " << tap << "\n\n" << "#!/bin/sh\nwhile [ 1 ]; do\nbhyvectl --destroy --vm=" << name << "\ngrub-bhyve -r hd0,msdos1 -m /usr/bsi/vm/" << name << "/device.map -M " << mem << " " << name << "\n\nbhyve -c " << cpu << " -m " << mem << " -H -P -A \\\n-l com1,stdio \\\n-s 0:0,hostbridge \\\n-s 1:0,lpc \\\n-s 2:0,virtio-net," << tap << " \\\n-s 4,virtio-blk,/usr/bsi/vm/" << name << "/" << name << ".img " << name << " \nbhyve_exit=$?\nif [ $bhyve_exit -ne 0 ]; then\nbreak\nfi\ndone\nbhyvectl --destroy --vm=" << name << "\n";
 		ush_file.close();
 		chmod(ufilename, S_IRWXU|S_IXGRP|S_IXOTH);
 
