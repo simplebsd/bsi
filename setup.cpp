@@ -7,7 +7,7 @@ void setup() {
 
 	if(a == 'y') {
 		ofstream loader("/boot/loader.conf", ios::app);
-		loader << "vmm_load=\"YES\"\nif_bridge_load=\"YES\"\nif_tap_load=\"YES\"\n";
+		loader << "vmm_load=\"YES\"\nif_bridge_load=\"YES\"\nif_tap_load=\"YES\"\nhw.vmm.topology.cores_per_package=2\n";
 		loader.close();
 		
 		ofstream sysctl("/etc/sysctl.conf", ios::app);
