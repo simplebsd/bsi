@@ -6,10 +6,15 @@ void setup() {
 	cin >> a;
 
 	if(a == 'y') {
-		ofstream loader;
-		loader.open("/boot/loader.conf", ios::app);
+		ofstream loader("/boot/loader.conf", ios::app);
 		loader << "vmm_load=\"YES\"\nif_bridge_load=\"YES\"\nif_tap_load=\"YES\"\n";
 		loader.close();
+		
+		ofstream sysctl("/etc/sysctl.conf", ios::app);
+		sysctl << "net.link.tap.up_on_open=1\n";
+		sysctl.close();
+
+		system("sysctl net.link.tap.up_on_open=1");
 		system("kldload vmm");
 		system("kldload if_tap");
 		system("kldload if_bridge");
