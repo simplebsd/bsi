@@ -14,7 +14,7 @@ void setup() {
 		sysctl << "net.link.tap.up_on_open=1\n";
 		sysctl.close();
 
-		system("sysctl net.link.tap.up_on_open=1");
+		system("/sbin/sysctl net.link.tap.up_on_open=1");
 		system("kldload vmm");
 		system("kldload if_tap");
 		system("kldload if_bridge");
