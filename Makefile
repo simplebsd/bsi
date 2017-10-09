@@ -2,8 +2,7 @@ install:
 	pkg ins -y screen rsync grub2-bhyve
 	mkdir -p /usr/bsi/vm
 	mkdir -p /usr/bsi/iso
-	mkdir -p /usr/bsi/update
-	mkdir -p /usr/local/etc/bsi
+	mkdir -p /usr/local/etc/bsi/update
 	touch /usr/local/etc/bsi/tap.conf
 	touch /var/log/bsi.log
 	chmod a+x /usr/share/examples/bhyve/vmrun.sh
