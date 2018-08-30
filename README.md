@@ -46,6 +46,6 @@ OPTIONS
 
 Installation.
 
-git clone https://github.com/simplebsd/bsi
-cd bsi/
+git clone https://github.com/simplebsd/bsi<br/>
+cd bsi/<br/>
 make install
