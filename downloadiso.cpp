@@ -3,8 +3,8 @@ void diso() {
 	
 	cout << "\n";
 	cout << "Choose iso file:\n\n";
-	cout << "1. FreeBSD 11.1 i386.\n";
-	cout << "2. FreeBSD 11.1 x64.\n";
+	cout << "1. FreeBSD 12.1 i386.\n";
+	cout << "2. FreeBSD 12.1 x64.\n";
 	cout << "3. Ubuntu 16.04 x64.\n";
 	cin >> i;
 
