@@ -1,0 +1,63 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <stdlib.h>
+#include <stdio.h>
+using namespace std;
+
+void build() {
+    char rtext[100], jcom[100], jadd[500];
+    string vm_name, os, iso, cores, mem, disk;
+
+    string conf_arr[6] = {};
+
+    ifstream rconf("./Bfile");
+    if(rconf.fail()) {
+        cout << "Can't find Bfile.";
+    }
+    else {
+
+        for(int i = 0; i < (sizeof(conf_arr) / sizeof(conf_arr[0])); i++) {
+            rconf.getline(rtext, 100);
+            conf_arr[i] = rtext;
+        }
+
+
+        rconf.close();
+
+        bname = conf_arr[0];
+        os = conf_arr[1];
+        iso = conf_arr[2];
+        cores = conf_arr[3];
+        mem = conf_arr[4];
+        disk = conf_arr[5];
+
+        if(bname.substr(0, 7) != "bname: ") {
+            cout << "Wrong parameter bname\n";
+        }
+        else if(os.substr(0, 4) != "os: ") {
+            cout << "Wrong parameter os\n";
+        }
+        else if(cores.substr(0, 7) != "cores: ") {
+            cout << "Wrong parameter cores\n";
+        }
+        else if(mem.substr(0, 5) != "mem: ") {
+            cout << "Wrong parameter mem\n";
+        }
+        else if(disk.substr(0, 6) != "disk: ") {
+            cout << "Wrong parameter disk\n";
+        }
+
+        else {
+            sprintf(jcom, "zfs clone zroot/jails/basejail@12.0-RELEASE zroot/jails/%s", bname.substr(7).c_str());
+            system(jcom);
+
+            sprintf(jadd, "%s { # jm_%s\n  host.hostname = \"%s\"; # jm_%s\n  interface = \"lo1\"; # jm_%s\n  ip4.addr = %s; # jm_%s\n} # jm_%s\n\n", bname.substr(7).c_str() , bname.substr(7).c_str(), jhostname.substr(11).c_str(), bname.substr(7).c_str(), bname.substr(7).c_str(), jipv4.substr(7).c_str(), bname.substr(7).c_str(), bname.substr(7).c_str());
+
+            ofstream jconf("/etc/jail.conf", ios::app);
+            jconf << jadd;
+            jconf.close();
+
+        }
+    }
+}
