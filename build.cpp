@@ -111,18 +111,18 @@ void install() {
 		sprintf(atp, "sed -i '' '/^cloned_interfaces/s/$/ %s\"/' /etc/rc.conf && sed -i '' '/^ifconfig_bridge0/s/$/addm %s up\"/' /etc/rc.conf", tap, tap); 
 system(atp);
 		
-		sprintf(folder, "/usr/bsi/vm/%s", name);
+		sprintf(folder, "/usr/bsi/vm/%s", vm_name);
 		mkdir(folder, 0777);
-		sprintf(com1, "truncate -s %iG /usr/bsi/vm/%s/%s.img", disk, name, name);
+		sprintf(com1, "truncate -s %iG /usr/bsi/vm/%s/%s.img", disk, vm_name, vm_name);
 		system(com1);
-		sprintf(filename, "/usr/bsi/vm/%s/%s.sh", name, name);
+		sprintf(filename, "/usr/bsi/vm/%s/%s.sh", vm_name, vm_name);
 		ofstream osconf;
 		osconf.open(filename);
-		osconf << "#!/bin/sh\n\n#OS: FreeBSD\n#CPU(cores): " << cores << "\n#Memory(MB): " << mem << "\n#Disk(GB): " << disk << "\n#Network : " << tap << "\n\n/usr/share/examples/bhyve/vmrun.sh -c " << cores << " -m " <<  mem << " -t " << tap << " -d " << name << ".img " << name << "\n";
+		osconf << "#!/bin/sh\n\n#OS: FreeBSD\n#CPU(cores): " << cores << "\n#Memory(MB): " << mem << "\n#Disk(GB): " << disk << "\n#Network : " << tap << "\n\n/usr/share/examples/bhyve/vmrun.sh -c " << cores << " -m " <<  mem << " -t " << tap << " -d " << vm_name << ".img " << vm_name << "\n";
 		osconf.close();
-		sprintf(sh_file, "/usr/bsi/vm/%s/%s.sh", name, name);
+		sprintf(sh_file, "/usr/bsi/vm/%s/%s.sh", vm_name, vm_name);
 		chmod(sh_file, S_IRWXU|S_IXGRP|S_IXOTH);
-		sprintf(com2, "/usr/share/examples/bhyve/vmrun.sh -c %i -m %i -t %s -d /usr/bsi/vm/%s/%s.img -i -I %s %s", cores, mem, tap, name, name, iso, name);
+		sprintf(com2, "/usr/share/examples/bhyve/vmrun.sh -c %i -m %i -t %s -d /usr/bsi/vm/%s/%s.img -i -I %s %s", cores, mem, tap, vm_name, vm_name, iso, vm_name);
 		system(com2);	
 	}
 	
