@@ -23,7 +23,7 @@
 #include "update.cpp"
 #include "conf.cpp"
 #include "confed.cpp"
-#include "build.cpp"
+//#include "build.cpp"
 //#include "backup.cpp"
 using namespace std;
 
