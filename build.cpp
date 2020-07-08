@@ -71,22 +71,6 @@ void build() {
 
                 sprintf(tap, "tap%i", nt);
 
-		cout << "Enter full path for install iso: ";
-		cin >> iso;
-		cout << "\n";
-		cout << "Enter number of cores CPU(1-16): ";
-		cin >> cores;
-		cout << "\n";
-		cout << "Enter size of memory(MB): ";
-		cin >> mem;
-		cout << "\n";
-		cout << "Enter size of disk(GB): ";
-		cin >> disk;
-		cout << "\n";
-		cout << "\n";
-		cout << "Enter name: ";
-		cin >> name;
-
 		ofstream tapw("/usr/local/etc/bsi/tap.conf");
                 tapw << nt;
                 tapw.close();
@@ -123,22 +107,6 @@ system(atp);
                 nt = t +1;
 
                 sprintf(tap, "tap%i", nt);
-
-		cout << "Enter full path for install iso: ";
-                cin >> iso;
-                cout << "\n";
-                cout << "Enter number of cores CPU(1-16): ";
-                cin >> cores;
-                cout << "\n";
-                cout << "Enter size of memory(MB): ";
-                cin >> mem;
-                cout << "\n";
-                cout << "Enter size of disk(GB): ";
-                cin >> disk;
-                cout << "\n";
-                cout << "\n";
-                cout << "Enter name: ";
-                cin >> name;
 
 		ofstream tapwu("/usr/local/etc/bsi/tap.conf");
                 tapwu << nt;
