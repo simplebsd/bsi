@@ -49,15 +49,6 @@ void build() {
         }
 
         else {
-            sprintf(jcom, "zfs clone zroot/jails/basejail@12.0-RELEASE zroot/jails/%s", bname.substr(7).c_str());
-            system(jcom);
-
-            sprintf(jadd, "%s { # jm_%s\n  host.hostname = \"%s\"; # jm_%s\n  interface = \"lo1\"; # jm_%s\n  ip4.addr = %s; # jm_%s\n} # jm_%s\n\n", bname.substr(7).c_str() , bname.substr(7).c_str(), jhostname.substr(11).c_str(), bname.substr(7).c_str(), bname.substr(7).c_str(), jipv4.substr(7).c_str(), bname.substr(7).c_str(), bname.substr(7).c_str());
-
-            ofstream jconf("/etc/jail.conf", ios::app);
-            jconf << jadd;
-            jconf.close();
-
 	    int t, nt;
 	    char tap[100], name[100], com1[300], com2[300], folder[150], filename[150], uifilename[150], ifile[100], ufilename[150], sh_file[150], ush_file[300], br1[150], br2[150], atp[300];
 
