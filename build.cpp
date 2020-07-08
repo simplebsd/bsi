@@ -149,8 +149,7 @@ system(atp);
 		ofstream tapw("/usr/local/etc/bsi/tap.conf");
                 tapw << nt;
                 tapw.close();
-	}
-}
+	    }
         }
     }
 }
