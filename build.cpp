@@ -75,7 +75,7 @@ void build() {
 		sprintf(atp, "sed -i '' '/^cloned_interfaces/s/$/ %s\"/' /etc/rc.conf && sed -i '' '/^ifconfig_bridge0/s/$/addm %s up\"/' /etc/rc.conf", tap, tap); 
 system(atp);
 		
-		sprintf(folder, "/usr/bsi/vm/%s", vm_name);
+		sprintf(folder, "/usr/bsi/vm/%s", vm_name.c_str());
 		mkdir(folder, 0777);
 		sprintf(com1, "truncate -s %iG /usr/bsi/vm/%s/%s.img", disk, vm_name, vm_name);
 		system(com1);
