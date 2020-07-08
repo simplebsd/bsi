@@ -62,8 +62,8 @@ void build() {
     }
 }
 void install() {
-	int t, nt;
-	char tap[100], name[100], com1[300], com2[300], folder[150], filename[150], uifilename[150], ifile[100], ufilename[150], sh_file[150], ush_file[300], br1[150], br2[150], atp[300];
+	    int t, nt;
+	    char tap[100], name[100], com1[300], com2[300], folder[150], filename[150], uifilename[150], ifile[100], ufilename[150], sh_file[150], ush_file[300], br1[150], br2[150], atp[300];
 
 	cout << "OS:\n";
 	cout << "1. FreeBSD.\n";
@@ -193,4 +193,7 @@ system(atp);
                 tapw << nt;
                 tapw.close();
 	}
+}
+        }
+    }
 }
