@@ -58,22 +58,11 @@ void build() {
             jconf << jadd;
             jconf.close();
 
-        }
-    }
-}
-void install() {
 	    int t, nt;
 	    char tap[100], name[100], com1[300], com2[300], folder[150], filename[150], uifilename[150], ifile[100], ufilename[150], sh_file[150], ush_file[300], br1[150], br2[150], atp[300];
 
-	cout << "OS:\n";
-	cout << "1. FreeBSD.\n";
-	cout << "2. Ubuntu.\n\n";
-	cout << "1 or 2: ";
-	cin >> os;
-	cout << "\n";
-
-	if(os == 1) {
-
+	    if(os == "freebsd") {
+ 
 		ifstream tapr("/usr/local/etc/bsi/tap.conf");
                 tapr >> t;
                 tapr.close();
@@ -124,9 +113,9 @@ system(atp);
 		chmod(sh_file, S_IRWXU|S_IXGRP|S_IXOTH);
 		sprintf(com2, "/usr/share/examples/bhyve/vmrun.sh -c %i -m %i -t %s -d /usr/bsi/vm/%s/%s.img -i -I %s %s", cores, mem, tap, vm_name, vm_name, iso, vm_name);
 		system(com2);	
-	}
+	    }
 	
-	else if(os == 2) {
+	    else if(os == "ubuntu") {
 		ifstream tapr("/usr/local/etc/bsi/tap.conf");
                 tapr >> t;
                 tapr.close();
