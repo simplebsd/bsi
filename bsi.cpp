@@ -66,7 +66,7 @@ int main(int argc, char *argv[]) {
 	else {
 
 		if(!strcmp(argv[1], "-a")) active();
-		else if(!strcmp(argv[1], "-b")) build();
+//		else if(!strcmp(argv[1], "-b")) build();
 		else if(!strcmp(argv[1], "-l")) list();
 		else if(!strcmp(argv[1], "-s") && !strcmp(argv[2], vm)) start(vm);
 		else if(!strcmp(argv[1], "-f") && !strcmp(argv[2], vm)) stop(vm);
