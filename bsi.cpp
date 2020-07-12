@@ -41,7 +41,7 @@ int main(int argc, char *argv[]) {
 		cout << "\tBsi is a simple Bhyve VM manager. It helps to install and manage virtual machines on Bhyve hypervisor.\n\n";
 		cout << "\e[1mOPTIONS\e[0m\n";
 		cout << "\t-a\t List all active virtual machines.\n\n";
-		cout << "\t-b\Build VM.\n\n";
+//		cout << "\t-b\Build VM.\n\n";
 		cout << "\t-l\t List all virtual machines.\n\n";
 		cout << "\t-s \033[4mVM\033[24m\t Start a virtual machine.\n\n";
 		cout << "\t-f \033[4mVM\033[24m\t Force stop a virtual machine.\n\n";
