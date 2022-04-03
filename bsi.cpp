@@ -24,7 +24,7 @@
 #include "conf.cpp"
 #include "confed.cpp"
 //#include "build.cpp"
-//#include "backup.cpp"
+//#include "snap.cpp"
 using namespace std;
 
 char *vm, *vm2;
@@ -56,7 +56,7 @@ int main(int argc, char *argv[]) {
 		cout << "\t-ud \033[4mVM\033[24m\t Delete a virtual machine from autostart.\n\n";
 		cout << "\t-k \033[4mVM\033[24m\t Show configuration of virtual machine.\n\n";
 		cout << "\t-ke \033[4mVM\033[24m\t Edit configuration of virtual machine.\n\n";
-//		cout << "\t-b\t Show backup information of virtual machines.\n\n";
+//		cout << "\t-b\t List snapshots of virtual machine.\n\n";
 		cout << "\t-dw\t Download installation iso.\n\n";
 		cout << "\tsetup\t Setup bhyve configuration files.\n\n";
 		cout << "\tupdate\t Update bsi.\n\n";
@@ -84,7 +84,7 @@ int main(int argc, char *argv[]) {
 		else if(!strcmp(argv[1], "-ud") && !strcmp(argv[2], vm)) autostart_del(vm);
 		else if(!strcmp(argv[1], "-k") && !strcmp(argv[2], vm)) conf(vm);
 		else if(!strcmp(argv[1], "-ke") && !strcmp(argv[2], vm)) confed(vm);
-//		else if(!strcmp(argv[1], "-b")) backup();
+//		else if(!strcmp(argv[1], "-b")) snap();
 		else if(!strcmp(argv[1], "-dw")) diso();
 		else if(!strcmp(argv[1], "setup")) setup();
 		else if(!strcmp(argv[1], "update")) update();
